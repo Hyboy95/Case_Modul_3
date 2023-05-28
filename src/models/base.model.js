@@ -15,6 +15,18 @@ class BaseModel {
             })
         })
     }
+    async testConnection() {
+        const sql = 'SELECT 1 AS result';
+        try {
+            const data = await this.querySql(sql);
+            console.log('Connection to database is successful!');
+            console.log('Result:', data);
+        } catch (error) {
+            console.error('Error connecting to database:', error);
+        } finally {
+            this.connect.end();
+        }
+    }
 }
 
 module.exports = BaseModel;

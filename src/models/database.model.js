@@ -1,10 +1,10 @@
-const mysql = require('mysql')
+const mysql = require('mysql');
 class DatabaseModel {
     constructor() {
         this.host = 'localhost';
         this.user = 'root';
         this.password = '123456';
-        this.database = 'ProductManager';
+        this.database = 'TeddyBearShopManager';
     }
 
     connect() {

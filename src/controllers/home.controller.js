@@ -1,15 +1,15 @@
 const BaseController = require('./base.controller');
 const productController = require('./../controllers/product.controller')
 class HomeController extends BaseController {
-    async getStaticFile(req, res, filePath) {
-        try {
-            await super.getStaticFile(req, res, filePath);
-        } catch (err) {
-            res.writeHead(404, {'Content-Type': 'text/plain'});
-            res.write('404 Not Found');
-            res.end();
-        }
-    }
+    // async getStaticFile(req, res, filePath) {
+    //     try {
+    //         await super.getStaticFile(req, res, filePath);
+    //     } catch (err) {
+    //         res.writeHead(404, {'Content-Type': 'text/plain'});
+    //         res.write('404 Not Found');
+    //         res.end();
+    //     }
+    // }
 
     async getHomePage(req, res, currentPage) {
         let html = await this.getTemplate('./src/views/Home.html');

@@ -1,12 +1,11 @@
 const http = require('http');
 const url = require('url');
-const path = require('path');
 const fs = require('fs');
-const qs = require('qs');
 
 const notFoundController = require('./src/controllers/notfound.controller');
 const homeController = require('./src/controllers/home.controller');
 const loginController = require('./src/controllers/login.controller');
+const registerController = require('./src/controllers/register.controller');
 
 const PORT = 3000;
 
@@ -30,6 +29,15 @@ handlers.login = (req, res) => {
         })
     }
 }
+
+handlers.register = (req, res) => {
+    if (req.method === 'GET') {
+        registerController.getRegisterPage(req, res).catch(err => {
+            console.log(err.message);
+        })
+    }
+}
+
 handlers.notfound = (req, res) => {
     notFoundController.getNotFoundPage(req, res).catch(err => {
         console.log(err.message);
@@ -38,7 +46,8 @@ handlers.notfound = (req, res) => {
 
 router = {
     '/': handlers.home,
-    '/login': handlers.login
+    '/login': handlers.login,
+    '/register': handlers.register,
 };
 
 let mimeTypes={
@@ -66,38 +75,6 @@ const server = http.createServer(async(req, res)=>{
         chosenHandler(req, res);
     }
 })
-
-// const server = http.createServer((req, res) => {
-//     const pathUrl = url.parse(req.url).pathname;
-//     switch (pathUrl) {
-//         case '/':
-//             let currentPage = 1;
-//             homeController.getHomePage(req, res, currentPage).catch(err => {
-//                 console.log(err.message);
-//             })
-//             break;
-//         case '/login':
-//             if (req.method === 'GET') {
-//                 loginController.getLoginPage(req, res).catch(err => {
-//                     console.log(err.message);
-//                 })
-//             } else {
-//                 loginController.loginToPage(req, res).catch(err => {
-//                     console.log(err.message);
-//                 })
-//             }
-//             break;
-//         case '/admin':
-//             res.end();
-//             break;
-//         default:
-//             const filePath = path.join(__dirname, 'src/views', pathUrl);
-//             homeController.getStaticFile(req, res, filePath).catch(err => {
-//                 console.log(err.message);
-//             });
-//             break;
-//     }
-// })
 
 server.listen(PORT, 'localhost', () => {
     console.log(`Server listening on port http://localhost:${PORT}`)

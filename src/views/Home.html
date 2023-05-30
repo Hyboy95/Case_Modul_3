@@ -36,7 +36,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="#" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
             <img src="/assets/img/logo-no-background.png" alt="" style="zoom: 2">
             <span class="d-none d-lg-block ps-2">HKP Shop</span>
         </a>
@@ -65,7 +65,7 @@
                         <span class="d-none d-md-block px-2 fs-5">Đăng nhập</span>
                     </a>
                     <span class="fs-5 nav-profile">|</span>
-                    <a class="nav-link nav-profile d-flex align-items-center" href="#">
+                    <a class="nav-link nav-profile d-flex align-items-center" href="/register">
                         <span class="d-none d-md-block px-2 fs-5">Đăng ký</span>
                     </a>
                 </div>
@@ -142,11 +142,21 @@
             <div class="row gx-4 col-lg-12 row-cols-3 row-cols-md-4 justify-content-lg-start">
                 {list-product}
             </div>
-            <nav class="datatable-pagination" id="pagination" >
-                <ul class="datatable-pagination-list">
-                    {pagination}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  {pagin}
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
                 </ul>
-            </nav>
+              </nav><!-- End Pagination with icons -->
         </div>
     </section>
 

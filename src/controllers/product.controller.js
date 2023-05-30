@@ -25,8 +25,8 @@ class ProductController extends BaseController {
         let totalPages = Math.ceil(products.length / numberPerPage);
         let paginationHtml = '';
         for (let i = 1; i <= totalPages; i++) {
-            paginationHtml += `<li class="datatable-pagination-list-item " style="border: 1px solid darkgray">`;
-            paginationHtml += `<a href="?page=${i}"><b>${i}</b></a>`;
+            paginationHtml += `<li class="page-item"></li>`;
+            paginationHtml += `<a class="page-link" href="?page=${i}">${i}</a>`;
             paginationHtml += `</li>`;
         }
         return {

@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 class BaseController {
-    getTemplate(pathFile) {
+    readFileData(pathFile) {
         return new Promise((resolve, reject) => {
             fs.readFile(pathFile, 'utf8', (err, data) => {
                 if (err) {

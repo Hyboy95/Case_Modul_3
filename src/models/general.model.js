@@ -1,5 +1,5 @@
 const BaseModel = require("./base.model");
-class LoginModel extends BaseModel {
+class GeneralModel extends BaseModel {
     async loginAdmin (username, password) {
         let sql = `CALL getAdminInfo('${username}', '${password}')`;
         const result = await this.querySql(sql);
@@ -7,4 +7,4 @@ class LoginModel extends BaseModel {
     }
 }
 
-module.exports = new LoginModel();
+module.exports = new GeneralModel();

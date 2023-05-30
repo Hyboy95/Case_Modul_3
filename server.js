@@ -2,29 +2,32 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 
-const notFoundController = require('./src/controllers/notfound.controller');
 const homeController = require('./src/controllers/home.controller');
-const loginController = require('./src/controllers/login.controller');
-const registerController = require('./src/controllers/register.controller');
+const generalController = require('./src/controllers/general.controller');
 
 const PORT = 3000;
 
 handlers = {};
 
 handlers.home = (req, res) => {
-    let currentPage = 1;
+    if (req.method === "GET") {
         homeController.getHomePage(req, res).catch(err => {
-        console.log(err.message);
-    })
+            console.log(err.message);
+        })
+    } else {
+        homeController.getSearchProductHomePage(req, res).catch(err => {
+            console.log(err.message);
+        })
+    }
 }
 
 handlers.login = (req, res) => {
     if (req.method === 'GET') {
-        loginController.getLoginPage(req, res).catch(err => {
+        generalController.getLoginPage(req, res).catch(err => {
             console.log(err.message);
         })
     } else {
-        loginController.loginToPage(req, res).catch(err => {
+        generalController.loginToPage(req, res).catch(err => {
             console.log(err.message);
         })
     }
@@ -32,22 +35,31 @@ handlers.login = (req, res) => {
 
 handlers.register = (req, res) => {
     if (req.method === 'GET') {
-        registerController.getRegisterPage(req, res).catch(err => {
+        generalController.getRegisterPage(req, res).catch(err => {
             console.log(err.message);
         })
     }
 }
 
 handlers.notfound = (req, res) => {
-    notFoundController.getNotFoundPage(req, res).catch(err => {
+    generalController.getNotFoundPage(req, res).catch(err => {
         console.log(err.message);
     })
+}
+
+handlers.homeFilter = (req, res) => {
+    if (req.method === 'GET') {
+        homeController.getFilterProductByType(req, res).catch(err => {
+            console.log(err.message);
+        })
+    }
 }
 
 router = {
     '/': handlers.home,
     '/login': handlers.login,
     '/register': handlers.register,
+    '/filter': handlers.homeFilter
 };
 
 let mimeTypes={

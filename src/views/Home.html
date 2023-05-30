@@ -77,52 +77,109 @@
 </header><!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
+
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="bi bi-grid"></i>
-                <span>Home</span>
-            </a>
-        </li><!-- End Home Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="/">
+          <i class="bi bi-grid"></i>
+          <span>Danh Mục</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Danh mục</span><i class="bi bi-chevron-down ms-auto"></i>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Theo Loại Sản Phẩm</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Gấu Bông Cao Cấp</span>
             </a>
-            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="#">
-                        <i class="bi bi-circle"></i><span>Gấu Bông Cao Cấp</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-circle"></i><span>Gấu Bông Khổng Lồ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-circle"></i><span>Gấu Bông Cho Bé</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-circle"></i><span>Gấu Bông Nhỏ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-circle"></i><span>Thỏ Bông</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </ul><!-- End Components Nav -->
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Gấu Bông Khổng Lồ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Gấu Bông Cho Bé</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Gấu Bông Nhỏ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Thỏ Bông</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
 
-</aside><!-- End Sidebar-->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-cash-coin"></i><span>Theo Giá Sản Phẩm</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Dưới 150.000 VNĐ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Từ 150.000 đến 500.000 VNĐ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Từ 500.000 đến 1000.000 VNĐ</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Trên 1.000.000 VNĐ</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Theo Kích Cỡ</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Size 0.2-0.5m</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Size 0.5-1m</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Size 1-1.6m</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Size > 1.6m</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
 
 <main id="main" class="main">
 
@@ -144,17 +201,7 @@
             </div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
                   {pagin}
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
                 </ul>
               </nav><!-- End Pagination with icons -->
         </div>
@@ -186,12 +233,5 @@
 <!-- Template Main JS File -->
 <script src="/assets/js/main.js"></script>
 
-<!--<script>-->
-<!--    function handlePaginationClick(page) {-->
-<!--        console.log(123)-->
-<!--        const newURL = window.location.origin + window.location.pathname + `?page=${page}`;-->
-<!--        window.location.href = newURL;-->
-<!--    }-->
-<!--</script>-->
 </body>
 </html>

@@ -13,7 +13,7 @@ handlers = {};
 
 handlers.home = (req, res) => {
     let currentPage = 1;
-        homeController.getHomePage(req, res, currentPage).catch(err => {
+        homeController.getHomePage(req, res).catch(err => {
         console.log(err.message);
     })
 }

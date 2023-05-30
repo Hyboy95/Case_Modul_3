@@ -2,8 +2,8 @@ const BaseController = require('./base.controller');
 const productModel = require('./../models/product.model');
 class ProductController extends BaseController {
     async getListProduct(page, numberPerPage = 12) {
-        let products = await productModel.getAllProduct();
         let startIndex = (parseInt(page) - 1) * numberPerPage;
+        let products = await productModel.getAllProduct();        
         let endIndex = page * numberPerPage;
         let paginatedProducts = products.slice(startIndex, endIndex);
         let newHtml = '';

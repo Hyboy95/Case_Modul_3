@@ -14,8 +14,8 @@ class ProductController {
             newHtml += `<div class="card-body p-4">`;
             newHtml += `<div class="text-center">`;
             newHtml += `<p class="fw-bolder">${product.pName}</p>`;
-            newHtml += `<p class="fw-bolder">${parseInt(product.pPrice).toLocaleString()} VNĐ</p>`;
             newHtml += `<p class="fw-bolder">Size: ${product.pSize}cm</p>`;
+            newHtml += `<p class="fw-bolder">${parseInt(product.pPrice).toLocaleString()} VNĐ</p>`;
             newHtml += `</div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

@@ -33,7 +33,7 @@ class GeneralController extends BaseController {
         } else {
             console.log('Login fail!');
             res.writeHead(301, {location: '/login'})
-            res.end()
+            res.end();
         }
     }
 

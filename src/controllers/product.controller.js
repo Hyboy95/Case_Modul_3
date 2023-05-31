@@ -1,7 +1,7 @@
 const BaseController = require('./base.controller');
 const productModel = require('./../models/product.model');
-class ProductController extends BaseController {
-    async getListProduct(page, func) {
+class ProductController {
+    static async getListProduct(page, func) {
         let products = await func;
         let startIndex = (parseInt(page) - 1) * 12;
         let endIndex = page * 12;
@@ -30,4 +30,4 @@ class ProductController extends BaseController {
     }
 }
 
-module.exports = new ProductController();
+module.exports = ProductController;

@@ -2,16 +2,16 @@ const qs = require('qs');
 const url = require("url");
 
 const BaseController = require('./base.controller');
-const generalController = require('./../controllers/general.controller');
-const productController = require('./../controllers/product.controller');
+const GeneralController = require('./../controllers/general.controller');
+const ProductController = require('./../controllers/product.controller');
 const productModel = require('./../models/product.model');
 
-class HomeController extends BaseController {
-    async getBasePage (req, res, func, link) {
+class HomeController {
+    static async getBasePage (req, res, func, link) {
         let query = qs.parse(url.parse(req.url).query);
         let products = await func;
-        let html = await this.readFileData('./src/views/General/Home.html');
-        let htmlReplace = await productController.getListProduct(query.page ? query.page : 1, products);
+        let html = await BaseController.readFileData('./src/views/General/Home.html');
+        let htmlReplace = await ProductController.getListProduct(query.page ? query.page : 1, products);
         let newHtml = htmlReplace.listProducts;
         let totalPages = htmlReplace.numPage;
         let paginationHtml = '';
@@ -26,22 +26,25 @@ class HomeController extends BaseController {
         res.write(html);
         res.end();
     }
-    async getHomePage(req, res) {
-        let getAllProducts = productModel.getAllProduct();
-        await this.getBasePage(req, res, getAllProducts, '?page=')
+    static async handlerHomePage(req, res) {
+        if (req.method === "GET") {
+            let getAllProducts = productModel.getAllProduct();
+            await HomeController.getBasePage(req, res, getAllProducts, '?page=')
+        } else {
+            let searchValue = await GeneralController.getDataByForm(req, res);
+            let getSearchProduct = productModel.getSearchProduct(searchValue.search);
+            await HomeController.getBasePage(req, res, getSearchProduct, '?page=');
+        }
     }
 
-    async getSearchProductHomePage(req, res) {
-        let searchValue = await generalController.getDataByForm(req, res);
-        let getSearchProduct = productModel.getSearchProduct(searchValue.search);
-        await this.getBasePage(req, res, getSearchProduct, '?page=');
-    }
-
-    async getFilterProductByType(req, res){
-        let type = qs.parse(url.parse(req.url).query).type;
-        let getProductFilterByType = productModel.getProductByType(type);
-        await this.getBasePage(req, res, getProductFilterByType, `?filter=${type}&page=`);
+    static async handlerFilterProductByType(req, res){
+        let query = qs.parse(url.parse(req.url).query);
+        if (query.type && req.method === 'GET') {
+            let type = qs.parse(url.parse(req.url).query).type;
+            let getProductFilterByType = productModel.getProductByType(type);
+            await HomeController.getBasePage(req, res, getProductFilterByType, `filter?type=${type}&page=`);
+        }
     }
 }
 
-module.exports = new HomeController;
+module.exports = HomeController;

@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
+const qs = require('qs');
 
 const homeController = require('./src/controllers/home.controller');
 const generalController = require('./src/controllers/general.controller');
@@ -48,7 +49,8 @@ handlers.notfound = (req, res) => {
 }
 
 handlers.homeFilter = (req, res) => {
-    if (req.method === 'GET') {
+    let query = qs.parse(url.parse(req.url).query);
+    if (query.type && req.method === 'GET') {
         homeController.getFilterProductByType(req, res).catch(err => {
             console.log(err.message);
         })

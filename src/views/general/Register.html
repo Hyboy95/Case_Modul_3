@@ -53,7 +53,7 @@
                                     <h5 class="card-title text-center pb-0 fs-4">Tạo tài khoản</h5>
                                 </div>
 
-                                <form class="row g-3 needs-validation" novalidate>
+                                <form class="row g-3 needs-validation" novalidate method="post" action="">
                                     <div class="col-12">
                                         <label for="yourName" class="form-label">Tên</label>
                                         <input type="text" name="name" class="form-control" id="yourName" required>
@@ -66,11 +66,16 @@
                                         <div class="invalid-feedback">Vui lòng nhập email của bạn!</div>
                                     </div>
 
-<!--                                    <div class="col-12">-->
-<!--                                        <label for="yourPhone" class="form-label">Số điện thoại</label>-->
-<!--                                        <input type="text" name="phone" class="form-control" id="yourPhone" required>-->
-<!--                                        <div class="invalid-feedback">Vui lòng nhập số điện thoại của bạn!</div>-->
-<!--                                    </div>-->
+                                   <div class="col-12">
+                                       <label for="yourPhone" class="form-label">Số điện thoại</label>
+                                       <input type="text" name="phone" class="form-control" id="yourPhone" required>
+                                       <div class="invalid-feedback">Vui lòng nhập số điện thoại của bạn!</div>
+                                   </div>
+
+                                   <div class="col-12">
+                                    <label for="yourAddress" class="form-label">Địa chỉ</label>
+                                    <input type="text" name="address" class="form-control" id="yourAddress" required>
+                                </div>
 
                                     <div class="col-12">
                                         <label for="yourUsername" class="form-label">Tên tài khoản</label>

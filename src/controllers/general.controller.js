@@ -24,11 +24,17 @@ class GeneralController {
             let user = await GeneralController.getDataByForm(req, res);
             let username = user.username;
             let password = user.password;
-            let isAdmin = await generalModel.loginAdmin(username, password);
-            if (isAdmin) {
-                console.log('Login success!');
-                res.writeHead(301, {location: '/admin'});
-                res.end();
+            let role = await generalModel.login(username, password);
+            if (role) {
+                if (role === 1) {
+                    console.log('Login success with role admin!');
+                    res.writeHead(301, {location: '/admin'});
+                    res.end();
+                } else {
+                    console.log('Login success with role user!');
+                    res.writeHead(301, {location: '/user'});
+                    res.end();
+                }
             } else {
                 console.log('Login fail!');
                 res.writeHead(301, {location: '/login'})
@@ -43,6 +49,21 @@ class GeneralController {
             res.writeHead(200, {'Content-type': 'text/html'});
             res.write(html);
             res.end();
+        } else {
+            let data = await GeneralController.getDataByForm(req, res);
+            let {name, email, phone, address, username, password} = data;
+
+            let usernameExists = await generalModel.checkExistsAccount(username, email);
+            if (!usernameExists) {
+                await generalModel.registerAccount(username, password, name, phone, email, address);
+                console.log('Register success!');
+                res.writeHead(301, {location: '/login'});
+                res.end();
+            } else {
+                console.log('Account was exists');
+                res.writeHead(301, {location: '/register'});
+                res.end();
+            }
         }
     }
 

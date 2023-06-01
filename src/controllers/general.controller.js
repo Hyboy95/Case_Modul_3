@@ -26,11 +26,11 @@ class GeneralController {
             let role = await generalModel.login(username, password);
             if (role === 1) {
                 console.log('Login success with role admin!');
-                res.writeHead(301, {location: '/admin'});
+                res.writeHead(302, {location: '/admin'});
                 res.end();
             } else if (role === 0) {
                 console.log('Login success with role user!');
-                res.writeHead(301, {location: `/user`});
+                res.writeHead(302, {location: `/user`});
                 res.end();
             } else {
                 console.log('Login fail!');

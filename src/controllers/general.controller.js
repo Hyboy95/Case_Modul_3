@@ -22,22 +22,19 @@ class GeneralController {
             res.end();
         } else {
             let user = await GeneralController.getDataByForm(req, res);
-            let username = user.username;
-            let password = user.password;
+            let {username, password} = user;
             let role = await generalModel.login(username, password);
-            if (role) {
-                if (role === 1) {
-                    console.log('Login success with role admin!');
-                    res.writeHead(301, {location: '/admin'});
-                    res.end();
-                } else {
-                    console.log('Login success with role user!');
-                    res.writeHead(301, {location: '/user'});
-                    res.end();
-                }
+            if (role === 1) {
+                console.log('Login success with role admin!');
+                res.writeHead(301, {location: '/admin'});
+                res.end();
+            } else if (role === 0) {
+                console.log('Login success with role user!');
+                res.writeHead(301, {location: `/user`});
+                res.end();
             } else {
                 console.log('Login fail!');
-                res.writeHead(301, {location: '/login'})
+                res.writeHead(301, {location: '/login'});
                 res.end();
             }
         }

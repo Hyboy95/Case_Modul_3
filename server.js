@@ -5,32 +5,33 @@ const fs = require('fs');
 const HomeController = require('./src/controllers/home.controller');
 const GeneralController = require('./src/controllers/general.controller');
 const AdminController = require('./src/controllers/admin.controller');
+const UserController = require('./src/controllers/user.controler');
 
 const PORT = 3000;
 
-let mimeTypes={
+let mimeTypes = {
     'jpeg': 'images/jpeg',
-    'jpg' : 'images/jpg',
-    'png' : 'images/png',
-    'js' :'text/javascript',
-    'css' : 'text/css',
-    'svg':'image/svg+xml',
-    'ttf':'font/ttf',
-    'woff':'font/woff',
-    'woff2':'font/woff2',
-    'eot':'application/vnd.ms-fontobject'
+    'jpg': 'images/jpg',
+    'png': 'images/png',
+    'js': 'text/javascript',
+    'css': 'text/css',
+    'svg': 'image/svg+xml',
+    'ttf': 'font/ttf',
+    'woff': 'font/woff',
+    'woff2': 'font/woff2',
+    'eot': 'application/vnd.ms-fontobject'
 };
 
-const server = http.createServer(async(req, res)=>{
+const server = http.createServer(async (req, res) => {
     let urlPath = url.parse(req.url).pathname;
     const filesDefences = urlPath.match(/\.js|\.css|\.png|\.svg|\.jpg|\.jpeg|\.ttf|\.woff|\.woff2|\.eot/);
     if (filesDefences) {
         const extension = mimeTypes[filesDefences[0].toString().split('.')[1]];
         res.writeHead(200, {'Content-Type': extension});
-        fs.createReadStream(__dirname  + req.url).pipe(res)
+        fs.createReadStream(__dirname + req.url).pipe(res)
     } else {
         let chosenHandler = (typeof (router[urlPath]) !== 'undefined') ? router[urlPath] : GeneralController.getNotFoundPage;
-        chosenHandler(req, res).catch (err => {
+        chosenHandler(req, res).catch(err => {
             console.log(err.message)
         });
     }
@@ -38,10 +39,12 @@ const server = http.createServer(async(req, res)=>{
 
 router = {
     '/': HomeController.handlerHomePage,
-    '/filter': HomeController.handlerFilterProductByType,
+    '/filter': HomeController.handlerFilterHomePage,
     '/login': GeneralController.handlerLoginPage,
-    '/register':GeneralController.handlerRegister,
-    '/admin': AdminController.handlerAdmin
+    '/register': GeneralController.handlerRegister,
+    '/admin': AdminController.handlerAdmin,
+    '/user': UserController.handlerUserHomePage,
+    '/user/filter': UserController.handlerFilterUserHomePage
 };
 
 server.listen(PORT, 'localhost', () => {

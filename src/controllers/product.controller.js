@@ -1,3 +1,6 @@
+const qs = require('qs');
+const url = require('url');
+
 const BaseController = require('./base.controller');
 const productModel = require('./../models/product.model');
 class ProductController {
@@ -29,6 +32,25 @@ class ProductController {
             listProducts: newHtml,
             numPage: totalPages
         }
+    }
+    static async getBasePage(req, res, func, link, filePath) {
+        let query = qs.parse(url.parse(req.url).query);
+        let products = await func;
+        let html = await BaseController.readFileData(filePath);
+        let htmlReplace = await ProductController.getListProduct(query.page ? query.page : 1, products);
+        let newHtml = htmlReplace.listProducts;
+        let totalPages = htmlReplace.numPage;
+        let paginationHtml = '';
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `<li class="page-item"></li>`;
+            paginationHtml += `<a class="page-link" href="${link}${i}">${i}</a>`;
+            paginationHtml += `</li>`;
+        }
+        html = html.replace('{list-product}', newHtml);
+        html = html.replace('{pagin}', paginationHtml);
+        res.writeHead(200, {'Content-type': 'text/html'});
+        res.write(html);
+        res.end();
     }
 }
 

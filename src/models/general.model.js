@@ -11,8 +11,10 @@ class GeneralModel extends BaseModel {
     async login (username, password) {
         let sql = `CALL getAccountInfo('${username}', '${password}')`;
         const result = await this.querySql(sql);
-        let roleBuffer = result[0][0].role;
-        return roleBuffer.readUInt8(0);
+        if (result[0].length > 0) {
+            let roleBuffer = result[0][0].role;
+            return roleBuffer.readUInt8(0);
+        } else return;
     }
 
     async registerAccount (username, password, name, phone, email, address) {

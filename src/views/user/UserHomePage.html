@@ -36,7 +36,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="/" class="logo d-flex align-items-center">
+        <a href="/user" class="logo d-flex align-items-center">
             <img src="/assets/img/logo-no-background.png" alt="" style="zoom: 2">
             <span class="d-none d-lg-block ps-2">HKP Shop</span>
         </a>
@@ -44,7 +44,7 @@
     </div><!-- End Logo -->
 
     <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="/">
+        <form class="search-form d-flex align-items-center" method="POST" action="/user">
             <input type="text" name="search" placeholder="Tìm kiếm" title="Enter search keyword">
             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
         </form>
@@ -61,13 +61,13 @@
 
             <li class="nav-item pe-5">
                 <div class="d-flex">
-                    <a class="nav-link nav-profile d-flex align-items-center" href="/login">
+                    <!-- <a class="nav-link nav-profile d-flex align-items-center" href="/login">
                         <span class="d-none d-md-block px-2 fs-5">Đăng nhập</span>
                     </a>
                     <span class="fs-5 nav-profile">|</span>
                     <a class="nav-link nav-profile d-flex align-items-center" href="/register">
                         <span class="d-none d-md-block px-2 fs-5">Đăng ký</span>
-                    </a>
+                    </a> -->
                 </div>
             </li><!-- End Profile Nav -->
 
@@ -83,7 +83,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="/">
+        <a class="nav-link " href="/user">
           <i class="bi bi-grid"></i>
           <span>Danh Mục</span>
         </a>
@@ -95,27 +95,27 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/filter?type=1">
+            <a href="/user/filter?type=1">
               <i class="bi bi-circle"></i><span>Gấu Bông Cao Cấp</span>
             </a>
           </li>
           <li>
-            <a href="/filter?type=2">
+            <a href="/user/filter?type=2">
               <i class="bi bi-circle"></i><span>Gấu Bông Khổng Lồ</span>
             </a>
           </li>
           <li>
-            <a href="/filter?type=3">
+            <a href="/user/filter?type=3">
               <i class="bi bi-circle"></i><span>Gấu Bông Cho Bé</span>
             </a>
           </li>
           <li>
-            <a href="/filter?type=4">
+            <a href="/user/filter?type=4">
               <i class="bi bi-circle"></i><span>Gấu Bông Nhỏ</span>
             </a>
           </li>
           <li>
-            <a href="/filter?type=5">
+            <a href="/user/filter?type=5">
               <i class="bi bi-circle"></i><span>Thỏ Bông</span>
             </a>
           </li>
@@ -128,22 +128,22 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/filter?minprice=0&maxprice=149999">
+            <a href="/user/filter?minprice=0&maxprice=149999">
               <i class="bi bi-circle"></i><span>Dưới 150.000 VNĐ</span>
             </a>
           </li>
           <li>
-            <a href="/filter?minprice=150000&maxprice=499999">
+            <a href="/user/filter?minprice=150000&maxprice=499999">
               <i class="bi bi-circle"></i><span>Từ 150.000 đến dưới 500.000 VNĐ</span>
             </a>
           </li>
           <li>
-            <a href="/filter?minprice=500000&maxprice=999999">
+            <a href="/user/filter?minprice=500000&maxprice=999999">
               <i class="bi bi-circle"></i><span>Từ 500.000 đến dưới 1000.000 VNĐ</span>
             </a>
           </li>
           <li>
-            <a href="/filter?minprice=1000000&maxprice=2999999">
+            <a href="/user/filter?minprice=1000000&maxprice=2999999">
               <i class="bi bi-circle"></i><span>Từ 1.000.000 VNĐ trở lên</span>
             </a>
           </li>
@@ -156,23 +156,23 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/filter?minsize=20&maxsize=49">
-              <i class="bi bi-circle"></i><span>Size 0.2-0.5m</span>
+            <a href="/user/filter?minsize=20&maxsize=49">
+              <i class="bi bi-circle"></i><span>Từ 20 đến dưới 50cm</span>
             </a>
           </li>
           <li>
-            <a href="/filter?minsize=50&maxsize=99">
-              <i class="bi bi-circle"></i><span>Size 0.5-1m</span>
+            <a href="/user/filter?minsize=50&maxsize=99">
+              <i class="bi bi-circle"></i><span>Từ 50 đến dưới 100cm</span>
             </a>
           </li>
           <li>
-            <a href="/filter?minsize=100&maxsize=159">
-              <i class="bi bi-circle"></i><span>Size 1-1.6m</span>
+            <a href="/user/filter?minsize=100&maxsize=159">
+              <i class="bi bi-circle"></i><span>Từ 100 đến dưới 160cm</span>
             </a>
           </li>
           <li>
-            <a href="/filter?minsize=160&maxsize=299">
-              <i class="bi bi-circle"></i><span>Size > 1.6m</span>
+            <a href="/user/filter?minsize=160&maxsize=299">
+              <i class="bi bi-circle"></i><span>Từ 160cm trở lên</span>
             </a>
           </li>
         </ul>

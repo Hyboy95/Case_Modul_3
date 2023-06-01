@@ -36,6 +36,18 @@ class UserController {
             await ProductController.getBasePage(req, res, getProductFilterBySize, `user/filter?minsize=${minSize}&maxsize=${maxSize}&page=`, './src/views/user/UserHomePage.html');
         }
     }
+    static async handlerUserProfilePage(req, res) {
+        if (req.method === "GET") {
+            let html = await BaseController.readFileData('./src/views/user/users-profile.html');
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(html);
+            res.end();
+        } else {
+            let searchValue = await GeneralController.getDataByForm(req, res);
+            let getSearchProduct = productModel.getSearchProduct(searchValue.search);
+            await ProductController.getBasePage(req, res, getSearchProduct, '?page=', './src/views/user/UserHomePage.html');
+        }
+    }
 }
 
 module.exports = UserController;

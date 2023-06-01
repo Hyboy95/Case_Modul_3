@@ -44,7 +44,8 @@ router = {
     '/register': GeneralController.handlerRegister,
     '/admin': AdminController.handlerAdmin,
     '/user': UserController.handlerUserHomePage,
-    '/user/filter': UserController.handlerFilterUserHomePage
+    '/user/filter': UserController.handlerFilterUserHomePage,
+    '/user/profile': UserController.handlerUserProfilePage
 };
 
 server.listen(PORT, 'localhost', () => {

@@ -1,12 +1,12 @@
 const BaseModel = require("./base.model");
 class ProductModel extends BaseModel {
     async getAllProduct () {
-        let sql = `SELECT * FROM product order by pName`;
+        let sql = `SELECT * FROM product order by pPrice`;
         return await this.querySql(sql);
     }
 
     async getSearchProduct (searchValue) {
-        let sql = `SELECT * FROM product WHERE pName like '%${searchValue}%' order by pName`;
+        let sql = `SELECT * FROM product WHERE pName like '%${searchValue}%' order by pPrice`;
         return await this.querySql(sql);
     }
 

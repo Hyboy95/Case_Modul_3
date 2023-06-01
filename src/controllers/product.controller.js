@@ -3,6 +3,7 @@ const url = require('url');
 
 const BaseController = require('./base.controller');
 const productModel = require('./../models/product.model');
+
 class ProductController {
     static async getListProduct(page, func) {
         let products = await func;
@@ -33,6 +34,7 @@ class ProductController {
             numPage: totalPages
         }
     }
+
     static async getBasePage(req, res, func, link, filePath) {
         let query = qs.parse(url.parse(req.url).query);
         let products = await func;
@@ -48,6 +50,14 @@ class ProductController {
         }
         html = html.replace('{list-product}', newHtml);
         html = html.replace('{pagin}', paginationHtml);
+        if (filePath === './src/views/user/UserHomePage.html') {
+            let dataUser = await BaseController.readFileData('./session/dataUser.json').catch(err => {
+                console.log(err.message);
+            });
+            let name = JSON.parse(dataUser).name;
+            html = html.replace('{Username1}', name);
+            html = html.replace('{Username2}', name);
+        }
         res.writeHead(200, {'Content-type': 'text/html'});
         res.write(html);
         res.end();

@@ -88,7 +88,7 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="admin/productManager">
+                        <a href="/productManager">
                             <i class="bi bi-circle"></i><span>Sản Phẩm</span>
                         </a>
                     </li>
@@ -112,7 +112,30 @@
 
         <section class="section dashboard">
             <div class="row">
-                
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">DataProducts</h5>
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Tên SP</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">Lựa chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {product-data}
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main><!-- End #main -->

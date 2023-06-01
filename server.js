@@ -5,6 +5,7 @@ const fs = require('fs');
 const HomeController = require('./src/controllers/home.controller');
 const GeneralController = require('./src/controllers/general.controller');
 const AdminController = require('./src/controllers/admin.controller');
+const ProductController = require('./src/controllers/product.controller');
 
 const PORT = 3000;
 
@@ -41,7 +42,9 @@ router = {
     '/filter': HomeController.handlerFilterProductByType,
     '/login': GeneralController.handlerLoginPage,
     '/register':GeneralController.handlerRegister,
-    '/admin': AdminController.handlerAdmin
+    '/admin': AdminController.handlerAdmin,
+    '/search': ProductController.searchProduct,
+    '/admin/productManager': AdminController.handlerProductByAdmin
 };
 
 server.listen(PORT, 'localhost', () => {

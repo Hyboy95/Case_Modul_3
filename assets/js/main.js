@@ -317,5 +317,9 @@
       }).observe(mainContainer);
     }, 200);
   }
-
 })();
+let buttonAdd = document.getElementById(add).onclick
+let add = ""
+
+
+

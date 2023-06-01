@@ -11,7 +11,15 @@ class ProductModel extends BaseModel {
     }
 
     async getProductByType (type) {
-        let sql = `SELECT * FROM product WHERE pCode = ${parseInt(type)} order by pName`;
+        let sql = `SELECT * FROM product WHERE pCode = ${parseInt(type)} order by pPrice`;
+        return await this.querySql(sql);
+    }
+    async getProductByPrice (minPrice, maxPrice) {
+        let sql = `SELECT * FROM product WHERE pPrice BETWEEN ${parseInt(minPrice)} AND ${parseInt(maxPrice)} order by pPrice`;
+        return await this.querySql(sql);
+    }
+    async getProductBySize (minSize, maxSize) {
+        let sql = `SELECT * FROM product WHERE pSize BETWEEN ${parseInt(minSize)} AND ${parseInt(maxSize)} order by pPrice`;
         return await this.querySql(sql);
     }
 }

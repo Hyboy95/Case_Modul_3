@@ -1,9 +1,25 @@
 const BaseModel = require("./base.model");
+const qs = require('qs');
+
 class GeneralModel extends BaseModel {
-    async loginAdmin (username, password) {
-        let sql = `CALL getAdminInfo('${username}', '${password}')`;
+    async checkExistsAccount(username, email) {
+        let sql = `SELECT * FROM Account WHERE username = '${username}' OR email = '${email}'`;
         const result = await this.querySql(sql);
-        return result[0].length > 0;
+        return result.length > 0;
+    }
+
+    async login (username, password) {
+        let sql = `CALL getAccountInfo('${username}', '${password}')`;
+        const result = await this.querySql(sql);
+        if (result[0].length > 0) {
+            let roleBuffer = result[0][0].role;
+            return roleBuffer.readUInt8(0);
+        } else return;
+    }
+
+    async registerAccount (username, password, name, phone, email, address) {
+        let sql = `CALL createAccount('${username}', '${password}', '${name}', '${phone}', '${email}', '${address}')`;
+        return await this.querySql(sql);
     }
 }
 

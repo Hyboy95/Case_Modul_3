@@ -5,7 +5,7 @@ class BaseController {
         return new Promise((resolve, reject) => {
             fs.readFile(pathFile, 'utf8', (err, data) => {
                 if (err) {
-                    reject(err.message)
+                    reject(err)
                 }
                 resolve(data);
             })

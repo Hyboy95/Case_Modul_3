@@ -11,6 +11,15 @@ class BaseController {
             })
         })
     }
+
+    static writeFileData(pathFile, data) {
+        return new Promise((resolve, reject) => {
+            fs.writeFile(pathFile, data,'utf-8', err => {
+                if (err) reject(err);
+                resolve();
+            });
+        });
+    }
 }
 
 module.exports = BaseController;

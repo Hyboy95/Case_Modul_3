@@ -32,21 +32,26 @@ class AdminController {
                     newHtml += `<td>${parseInt(product.pPrice).toLocaleString()}</td>`;
                     newHtml += `<td>${product.pQuantity}</td>`;
                     newHtml += `<td>${product.pSize}</td>`;
-                    newHtml += `<td><a href='/admin/productManager/updateProduct?id=${product.pID}'><button type="button" class="btn btn-primary">Chi Tiết</button></a>
-                  <button type="button" class="btn btn-danger">Xóa</button></td>`;
+                    newHtml += `<td>
+                    <form action= '' method = 'post'>
+                    <a href='/admin/productManager/updateProduct?id=${product.pID}'><button type="button" class="btn btn-primary">Chi Tiết</button></a>
+                    <button type="submit" name="pID" value = ${product.pID} class="btn btn-danger">Xóa</button></td>
+                    </form>`;
                 })
                 let html = await BaseController.readFileData('./src/views/admin/productManager.html');
                 html = html.replace('{product-data}', newHtml);
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.write(html);
                 res.end();
+            } else {
+                await AdminController.deleteProduct(req, res);
             }
         } catch (err) {
             console.log(err.message);
         }
     }
 
-    static async updateProductByAdmin(req, res) {
+    static async updateProductByID(req, res) {
         let id = qs.parse(url.parse(req.url).query).id;
         if (id && req.method === "GET") {
             let productDataArray = await productModel.getInfoProductByID(id);
@@ -75,10 +80,7 @@ class AdminController {
                 let data = await GeneralController.getDataByForm(req, res);
                 let {pImg, pName, pCode, pDesc, pPrice, pQuantity, pSize} = data;
                 if (pImg === '') {
-                    await productModel.getProductImgByID(id).then(data => {
-                        pImg = data[0].pImg
-                        console.log(data[0].pImg)
-                    });
+                    await productModel.getProductImgByID(id).then(data => pImg = data[0].pImg);
                 } else {
                     pImg = '/assets/img/productImage/' + pImg;
                 }
@@ -90,6 +92,29 @@ class AdminController {
             }
         } else {
             await GeneralController.getNotFoundPage(req, res);
+        }
+    }
+
+    static async deleteProduct(req, res) {
+        let data = await GeneralController.getDataByForm(req, res);
+        await productModel.deleteProductByID(data.pID);
+        res.writeHead(301, {location:'/admin/productManager'})
+        return res.end();
+    }
+
+    static async addProduct(req, res) {
+        if (req.method === "GET") {
+            let html = await BaseController.readFileData('./src/views/Admin/addProduct.html');
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.write(html);
+            return res.end();
+        } else {
+            let data = await GeneralController.getDataByForm(req, res);
+            let {pName, pCode, pQuantity, pPrice, pDesc, pSize, pImg} = data;
+            pImg = '/assets/img/productImage/' + pImg;
+            await productModel.addProduct(pName, +pCode, +pQuantity, +pPrice, pDesc, +pSize, pImg);
+            res.writeHead(301, {location: '/admin/productManager'});
+            return res.end();
         }
     }
 }

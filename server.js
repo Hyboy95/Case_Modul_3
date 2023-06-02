@@ -44,7 +44,8 @@ router = {
     '/register': GeneralController.handlerRegister,
     '/admin': AdminController.handlerAdmin,
     '/admin/productManager': AdminController.handlerProductByAdmin,
-    '/admin/productManager/updateProduct': AdminController.updateProductByAdmin,
+    '/admin/productManager/updateProduct': AdminController.updateProductByID,
+    '/admin/productManager/addProduct': AdminController.addProduct,
     '/user': UserController.handlerUserHomePage,
     '/user/filter': UserController.handlerFilterUserHomePage,
     '/user/profile': UserController.handlerUserProfilePage

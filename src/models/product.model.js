@@ -39,6 +39,16 @@ class ProductModel extends BaseModel {
         let sql = `SELECT pImg FROM Product WHERE pID = ${pID};`;
         return await this.querySql(sql);
     }
+
+    async deleteProductByID(pID) {
+        let sql = `DELETE FROM Product WHERE pID = ${pID};`;
+        await this.querySql(sql);
+    }
+
+    async addProduct (pName, pCode, pQuantity, pPrice, pdesc, pSize, pImg) {
+         let sql = `insert into Product (pName, pCode, pQuantity, pPrice, pdesc, pSize, pImg) values ('${pName}', '${pCode}', '${pQuantity}', '${pPrice}', '${pdesc}', '${pSize}', '${pImg}');`;
+         await this.querySql(sql);
+    }
 }
 
 module.exports = new ProductModel();

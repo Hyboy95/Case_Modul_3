@@ -5,6 +5,7 @@ const fs = require('fs');
 const BaseController = require('./base.controller');
 const productModel = require('./../models/product.model');
 const GeneralController = require("./general.controller");
+const userModel = require('./../models/user.model')
 
 class AdminController {
     static async handlerAdmin(req, res) {
@@ -20,6 +21,29 @@ class AdminController {
         }
     }
 
+    static async handlerUserByAdmin(req, res) {
+        if (req.method === "GET") {
+            let users = await userModel.getAllUser();
+            let newHtml = '';
+            users.forEach((user) => {
+
+                newHtml += `<tr>`;
+                newHtml += `<td>${user.userID}</td>`;
+                newHtml += `<td>${user.name}</td>`;
+                newHtml += `<td>${(user.username)}</td>`;
+                newHtml += `<td>${user.email}</td>`;
+                newHtml += `<td>${user.phone}</td>`;
+                newHtml += `<td>${user.address}</td>`;
+                newHtml += `<td><button >Sửa</button>
+                         <button>Xóa</button></td>`;
+            })
+            let html = await BaseController.readFileData('./src/views/admin/userManager.html');
+            html = html.replace('{user-data}', newHtml);
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.write(html);
+            res.end();
+        }
+    }
     static async handlerProductByAdmin(req, res) {
         try {
             if (req.method === "GET") {

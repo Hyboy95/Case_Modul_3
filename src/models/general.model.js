@@ -8,7 +8,7 @@ class GeneralModel extends BaseModel {
         return result.length > 0;
     }
 
-    async login (username, password) {
+    async login(username, password) {
         let sql = `CALL getAccountInfo('${username}', '${password}')`;
         const result = await this.querySql(sql);
         if (result[0].length > 0) {
@@ -20,7 +20,7 @@ class GeneralModel extends BaseModel {
         } else return result[0].length;
     }
 
-    async registerAccount (username, password, name, phone, email, address) {
+    async registerAccount(username, password, name, phone, email, address) {
         let sql = `CALL createAccount('${username}', '${password}', '${name}', '${phone}', '${email}', '${address}')`;
         return await this.querySql(sql);
     }

@@ -67,7 +67,6 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="/">
                             <i class="bi bi-box-arrow-right"></i>
@@ -133,8 +132,8 @@
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Quản Lý Đơn Hàng</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-journal-text"></i><span>Quản Lý Đơn Hàng</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -150,103 +149,49 @@
 
 <main id="main" class="main">
 
-    <section class="section profile">
-        <div class="row justify-content-center">
-
-            <div class="col-xl-8">
-
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-body pt-3">
-                        <!-- Bordered Tabs -->
-                        <ul class="nav nav-tabs nav-tabs-bordered">
+                    <div class="card-body">
+                        <h3 class="card-title">Dữ Liệu Khách Hàng</h3>
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Tên Tài Khoản</th>
+                                <th scope="col">Tên Khách Hàng</th>
+                                <th scope="col">Số Điện Thoại</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Địa Chỉ</th>
+                                <th scope="col">Lựa Chọn</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {user-data}
+                            <a href='/admin/userManager/addUser'>
+                                <button type="button" class="btn btn-primary">Thêm Khách Hàng</button>
+                            </a>
+                            <br><br>
+                            </tbody>
+                        </table>
 
-                            <li class="nav-item">
-                                <h3>Thêm Mới Sản Phẩm</h3>
-                            </li>
-                        </ul>
-                        <div class="tab-content pt-2">
-
-                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit"></div>
-
-                        </div>
-
-                        <!-- Profile Edit Form -->
-                        <form action="" method="post">
-                            <div class="row mb-3">
-                                <label class="col-md-4 col-lg-3 col-form-label">Ảnh Sản Phẩm</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <div class="pt-2">
-                                        <label class="form-label" for="customFile">Chọn URL</label>
-                                        <input type="file" name="pImg" oninput="uploadImg()" class="form-control"
-                                               id="customFile">
-                                    </div>
-                                </div>
+                        <div class="modal" id="deleteModal">
+                            <div class="modal-content">
+                                <p><b>Bạn có chắc chắn muốn xóa?</b></p>
+                                <button type="button" class="btn btn-primary mb-2" id="confirmDelete">Có</button>
+                                <button type="button" class="btn btn-secondary" id="cancelDelete">Không</button>
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="pName" class="col-md-4 col-lg-3 col-form-label">Tên Sản Phẩm</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="pName" type="text" class="form-control" id="pName" value="">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="pType" class="col-md-4 col-lg-3 col-form-label">Loại Sản Phẩm</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" name="pCode" aria-label="select-product">
-                                        <option selected value="1">Chọn Loại Sản Phẩm</option>
-                                        <option value="1">Gấu Bông Cao Cấp</option>
-                                        <option value="2">Gấu Bông Khổng Lồ</option>
-                                        <option value="3">Gấu Bông Cho Bé</option>
-                                        <option value="4">Gấu Bông Nhỏ</option>
-                                        <option value="5">Thỏ Bông</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="about" class="col-md-4 col-lg-3 col-form-label">Mô Tả</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <textarea name="pDesc" class="form-control" id="about"
-                                              style="height: 80px"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="pPrice" class="col-md-4 col-lg-3 col-form-label">Giá Sản Phẩm</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="pPrice" type="text" class="form-control" id="pPrice" value="">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="pQuantity" class="col-md-4 col-lg-3 col-form-label">Số Lượng</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="pQuantity" type="text" class="form-control" id="pQuantity" value="">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="pSize" class="col-md-4 col-lg-3 col-form-label">Size</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="pSize" type="text" class="form-control" id="pSize" value="">
-                                </div>
-                            </div>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
-                            </div>
-                        </form><!-- End Profile Edit Form -->
+                    </div>
+                    <!-- End Vertically centered Modal-->
 
                     </div>
-                </div><!-- End Bordered Tabs -->
+                </div>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 </main><!-- End #main -->
-
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>
 
@@ -262,14 +207,47 @@
 
 <!-- Template Main JS File -->
 <script src="/assets/js/main.js"></script>
+
 <script>
-    function uploadImg() {
-        let dirImg = '/assets/img/productImage/'
-        let imgPath = document.getElementById('customFile').value;
-        let imgArr = imgPath.split('\\');
-        let imgUpdate = dirImg + imgArr[2];
-        return imgUpdate;
-    }
+    let deleteBtns = document.querySelectorAll('.delete-btn-user');
+    let deleteModal = document.getElementById('deleteModal');
+    let confirmDeleteButton = document.getElementById('confirmDelete');
+    let cancelDeleteButton = document.getElementById('cancelDelete');
+
+    deleteBtns.forEach(button => {
+        button.addEventListener('click', () => {
+            let userID = button.value;
+            deleteModal.style.display = 'block';
+            confirmDeleteButton.addEventListener('click',  () => {
+                let promise = fetch('/admin/userManager', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({userID: userID})
+                })
+                promise.then(response => response.json())
+                .then(data => {
+                    if (data && data.success) {
+                        let userDelete = document.getElementById(`user-${userID}`);
+                        if (userDelete) {
+                            userDelete.remove();
+                        }
+                        location.reload();
+                    } else {
+                        alert('Xóa không thành công!');
+                    }
+                })
+                .catch(err => console.log(err));
+                deleteModal.style.display = 'none';
+            });
+
+            cancelDeleteButton.addEventListener('click', () => {
+                deleteModal.style.display = 'none';
+            });
+        });
+    });
 </script>
+
 </body>
 </html>

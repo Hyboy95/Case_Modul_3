@@ -35,7 +35,6 @@ class ProductModel extends BaseModel {
         let sql = `CALL updateProduct(${pID}, '${pName}', ${parseInt(pCode)}, '${pDesc}', ${parseFloat(pPrice)}, ${parseInt(pQuantity)}, ${parseInt(pSize)}, '${pImg}')`;
         await this.querySql(sql);
     }
-
     async getProductImgByID(pID) {
         let sql = `SELECT pImg FROM Product WHERE pID = ${pID};`;
         return await this.querySql(sql);

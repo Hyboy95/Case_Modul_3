@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+
 class DatabaseModel {
     constructor() {
         this.host = 'localhost';

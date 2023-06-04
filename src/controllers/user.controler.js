@@ -36,6 +36,7 @@ class UserController {
             await ProductController.getBasePage(req, res, getProductFilterBySize, `user/filter?minsize=${minSize}&maxsize=${maxSize}&page=`, './src/views/user/UserHomePage.html');
         }
     }
+
     static async handlerUserProfilePage(req, res) {
         if (req.method === "GET") {
             let html = await BaseController.readFileData('./src/views/user/users-profile.html');

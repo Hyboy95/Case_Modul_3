@@ -1,4 +1,4 @@
-/*!
+/*!echarts
  * Chart.js v4.2.1
  * https://www.chartjs.org
  * (c) 2023 Chart.js Contributors

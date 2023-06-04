@@ -161,7 +161,7 @@
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
                             <li class="nav-item">
-                                <h3>Thêm Mới Sản Phẩm</h3>
+                                <h3>Thêm Mới Khách Hàng</h3>
                             </li>
                         </ul>
                         <div class="tab-content pt-2">
@@ -173,68 +173,49 @@
                         <!-- Profile Edit Form -->
                         <form action="" method="post">
                             <div class="row mb-3">
-                                <label class="col-md-4 col-lg-3 col-form-label">Ảnh Sản Phẩm</label>
+                                <label for="username" class="col-md-4 col-lg-3 col-form-label">UserName</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <div class="pt-2">
-                                        <label class="form-label" for="customFile">Chọn URL</label>
-                                        <input type="file" name="pImg" oninput="uploadImg()" class="form-control"
-                                               id="customFile">
-                                    </div>
+                                    <input name="username" type="text" class="form-control" id="username" value="">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="pName" class="col-md-4 col-lg-3 col-form-label">Tên Sản Phẩm</label>
+                                <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="pName" type="text" class="form-control" id="pName" value="">
+                                    <input name="password" type="password" class="form-control" id="password" value="">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="pType" class="col-md-4 col-lg-3 col-form-label">Loại Sản Phẩm</label>
+                                <label for="name" class="col-md-4 col-lg-3 col-form-label">Tên</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" name="pCode" aria-label="select-product">
-                                        <option selected value="1">Chọn Loại Sản Phẩm</option>
-                                        <option value="1">Gấu Bông Cao Cấp</option>
-                                        <option value="2">Gấu Bông Khổng Lồ</option>
-                                        <option value="3">Gấu Bông Cho Bé</option>
-                                        <option value="4">Gấu Bông Nhỏ</option>
-                                        <option value="5">Thỏ Bông</option>
-                                    </select>
+                                    <input name="name" type="text" class="form-control" id="name" value="">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="about" class="col-md-4 col-lg-3 col-form-label">Mô Tả</label>
+                                <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <textarea name="pDesc" class="form-control" id="about"
-                                              style="height: 80px"></textarea>
+                                    <input name="email" type="text" class="form-control" id="email" value="">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="pPrice" class="col-md-4 col-lg-3 col-form-label">Giá Sản Phẩm</label>
+                                <label for="phone" class="col-md-4 col-lg-3 col-form-label">Số Điện Thoại</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="pPrice" type="text" class="form-control" id="pPrice" value="">
+                                    <input name="phone" type="text" class="form-control" id="phone" value="">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="pQuantity" class="col-md-4 col-lg-3 col-form-label">Số Lượng</label>
+                                <label for="address" class="col-md-4 col-lg-3 col-form-label">Địa Chỉ</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="pQuantity" type="text" class="form-control" id="pQuantity" value="">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="pSize" class="col-md-4 col-lg-3 col-form-label">Size</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="pSize" type="text" class="form-control" id="pSize" value="">
+                                    <input name="address" type="text" class="form-control" id="address" value="">
                                 </div>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+                                <button type="submit" class="btn btn-primary">Thêm Khách Hàng</button>
                             </div>
                         </form><!-- End Profile Edit Form -->
 

@@ -7,7 +7,7 @@ const generalModel = require('./../models/general.model');
 const productModel = require('./../models/product.model');
 const userModel = require('./../models/user.model');
 const GeneralController = require("./general.controller");
-const userModel = require('./../models/user.model')
+
 
 class AdminController {
     static async handlerAdmin(req, res) {

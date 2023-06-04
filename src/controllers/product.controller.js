@@ -25,10 +25,10 @@ class ProductController {
                     </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto w-75 mb-2" href="/product?id=${product.pID}">Chi Tiết Sản Phẩm</a>
+                                <a class="btn btn-outline-dark mt-auto w-100 mb-2" href="/product?id=${product.pID}">Chi Tiết Sản Phẩm</a>
                             </div>
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto w-75" href="/login">Thêm Vào Giỏ Hàng</a>
+                                <a class="btn btn-outline-dark mt-auto w-100" href="/login">Thêm Vào Giỏ Hàng</a>
                             </div>
                         </div>
                     </div>

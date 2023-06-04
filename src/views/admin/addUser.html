@@ -67,7 +67,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                  
+
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="/">
                             <i class="bi bi-box-arrow-right"></i>
@@ -89,9 +89,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-
             <a class="nav-link " href="/admin">
-
                 <i class="bi bi-grid"></i>
                 <span>Danh Mục</span>
             </a>
@@ -99,7 +97,6 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-
                 <i class="ri-bear-smile-line"></i><span>Quản Lý Sản Phẩm</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -136,8 +133,8 @@
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Quản Lý Đơn Hàng</span><i
-                    class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-journal-text"></i><span>Quản Lý Đơn Hàng</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -153,51 +150,80 @@
 
 <main id="main" class="main">
 
-    <section class="section dashboard">
-        <div class="row">
-            <div class="col-lg-12">
+    <section class="section profile">
+        <div class="row justify-content-center">
+
+            <div class="col-xl-8">
+
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
 
-                        <h3 class="card-title">Dữ Liệu Khách Hàng</h3>
+                            <li class="nav-item">
+                                <h3>Thêm Mới Khách Hàng</h3>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-2">
 
-                        <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                            <tr>
-                                <th scope="col">ID</th>
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit"></div>
 
-                                <th scope="col">Tên Tài Khoản</th>
-                                <th scope="col">Tên Khách Hàng</th>
-                                <th scope="col">Số Điện Thoại</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Địa Chỉ</th>
-                                <th scope="col">Lựa Chọn</th>
+                        </div>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {user-data}
-
-                            <a href='/admin/userManager/addUser'>
-                                <button type="button" class="btn btn-primary">Thêm Khách Hàng</button>
-                            </a>
-                            <br><br>
-                            </tbody>
-                        </table>
-
-                        <div class="modal" id="deleteModal">
-                            <div class="modal-content">
-                                <p><b>Bạn có chắc chắn muốn xóa?</b></p>
-                                <button type="button" class="btn btn-primary mb-2" id="confirmDelete">Có</button>
-                                <button type="button" class="btn btn-secondary" id="cancelDelete">Không</button>
+                        <!-- Profile Edit Form -->
+                        <form action="" method="post">
+                            <div class="row mb-3">
+                                <label for="username" class="col-md-4 col-lg-3 col-form-label">UserName</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="username" type="text" class="form-control" id="username" value="">
+                                </div>
                             </div>
-                    </div>
-                    <!-- End Vertically centered Modal-->
+
+                            <div class="row mb-3">
+                                <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="password" type="password" class="form-control" id="password" value="">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="name" class="col-md-4 col-lg-3 col-form-label">Tên</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="name" type="text" class="form-control" id="name" value="">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="email" type="text" class="form-control" id="email" value="">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="phone" class="col-md-4 col-lg-3 col-form-label">Số Điện Thoại</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="phone" type="text" class="form-control" id="phone" value="">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="address" class="col-md-4 col-lg-3 col-form-label">Địa Chỉ</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="address" type="text" class="form-control" id="address" value="">
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Thêm Khách Hàng</button>
+                            </div>
+                        </form><!-- End Profile Edit Form -->
 
                     </div>
-                </div>
+                </div><!-- End Bordered Tabs -->
             </div>
+        </div>
+        </div>
         </div>
     </section>
 </main><!-- End #main -->
@@ -217,47 +243,14 @@
 
 <!-- Template Main JS File -->
 <script src="/assets/js/main.js"></script>
-
 <script>
-    let deleteBtns = document.querySelectorAll('.delete-btn-user');
-    let deleteModal = document.getElementById('deleteModal');
-    let confirmDeleteButton = document.getElementById('confirmDelete');
-    let cancelDeleteButton = document.getElementById('cancelDelete');
-
-    deleteBtns.forEach(button => {
-        button.addEventListener('click', () => {
-            let userID = button.value;
-            deleteModal.style.display = 'block';
-            confirmDeleteButton.addEventListener('click',  () => {
-                let promise = fetch('/admin/userManager', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({userID: userID})
-                })
-                promise.then(response => response.json())
-                .then(data => {
-                    if (data && data.success) {
-                        let userDelete = document.getElementById(`user-${userID}`);
-                        if (userDelete) {
-                            userDelete.remove();
-                        }
-                        location.reload();
-                    } else {
-                        alert('Xóa không thành công!');
-                    }
-                })
-                .catch(err => console.log(err));
-                deleteModal.style.display = 'none';
-            });
-
-            cancelDeleteButton.addEventListener('click', () => {
-                deleteModal.style.display = 'none';
-            });
-        });
-    });
+    function uploadImg() {
+        let dirImg = '/assets/img/productImage/'
+        let imgPath = document.getElementById('customFile').value;
+        let imgArr = imgPath.split('\\');
+        let imgUpdate = dirImg + imgArr[2];
+        return imgUpdate;
+    }
 </script>
-
 </body>
 </html>

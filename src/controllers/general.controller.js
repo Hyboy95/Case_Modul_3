@@ -39,7 +39,7 @@ class GeneralController {
                     res.writeHead(302, {location: `/user`});
                     res.end();
                 }
-            }  else {
+            } else {
                 console.log('Login fail!');
                 res.writeHead(301, {location: '/login'});
                 res.end();

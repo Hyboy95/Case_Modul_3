@@ -97,22 +97,49 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Quản Lý</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="ri-bear-smile-line"></i><span>Quản Lý Sản Phẩm</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="admin/productManager">
-                        <i class="bi bi-circle"></i><span>Sản Phẩm</span>
+                    <a href="/admin/productManager">
+                        <i class="bi bi-circle"></i><span>Danh Sách Sản Phẩm</span>
                     </a>
                 </li>
                 <li>
-                    <a href="admin/userManager">
-                        <i class="bi bi-circle"></i><span>Khách Hàng</span>
+                    <a href="/admin/productManager/addProduct">
+                        <i class="bi bi-circle"></i><span>Thêm Mới Sản Phẩm</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-file-person"></i><span>Quản Lý Khách Hàng</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="/admin/userManager">
+                        <i class="bi bi-circle"></i><span>Danh Sách Khách Hàng</span>
                     </a>
                 </li>
                 <li>
-                    <a href="admin/orderManager">
-                        <i class="bi bi-circle"></i><span>Đơn Hàng</span>
+                    <a href="/admin/userManager/addUser">
+                        <i class="bi bi-circle"></i><span>Thêm Mới Khách Hàng</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Quản Lý Đơn Hàng</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="/admin/orderManager">
+                        <i class="bi bi-circle"></i><span>Danh Sách Đơn Hàng</span>
                     </a>
                 </li>
             </ul>
@@ -127,7 +154,7 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
 
                     <!-- Sales Card -->
@@ -190,7 +217,7 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>76 triệu</h6>
+                                        <h6>55 triệu</h6>
                                         <span class="text-success small pt-1 fw-bold">Tăng 8%</span> <span
                                             class="text-muted small pt-2 ps-1"></span>
 
@@ -324,9 +351,9 @@
             </div><!-- End Left side columns -->
 
             <!-- Right side columns -->
-            <div class="col-lg-4">
+            <!-- <div class="col-lg-4">
 
-                <!-- Website Traffic -->
+                
                 <div class="card">
                     <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -402,9 +429,9 @@
                         </script>
 
                     </div>
-                </div><!-- End Website Traffic -->
+                </div>
 
-                <!-- Budget Report -->
+                
                 <div class="card">
                     <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -431,7 +458,7 @@
                                         data: ['Ngân sách phân bổ', 'Chi tiêu thực tế']
                                     },
                                     radar: {
-                                        // shape: 'circle',
+                                        
                                         indicator: [{
                                             name: 'Bán hàng',
                                             max: 6500
@@ -476,9 +503,9 @@
                         </script>
 
                     </div>
-                </div><!-- End Budget Report -->
+                </div>
 
-            </div><!-- End Right side columns -->
+            </div> -->
 
         </div>
     </section>

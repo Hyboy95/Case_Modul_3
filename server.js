@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const HomeController = require('./src/controllers/home.controller');
 const GeneralController = require('./src/controllers/general.controller');
+const ProductController = require('./src/controllers/product.controller');
 const AdminController = require('./src/controllers/admin.controller');
 const UserController = require('./src/controllers/user.controler');
 
@@ -44,12 +45,14 @@ router = {
     '/register': GeneralController.handlerRegister,
     '/admin': AdminController.handlerAdmin,
     '/admin/productManager': AdminController.handlerProductByAdmin,
+    '/admin/productManager/updateProduct': AdminController.updateProductByID,
+    '/admin/productManager/addProduct': AdminController.addProduct,
     '/admin/userManager': AdminController.handlerUserByAdmin,
-    '/admin/productManager/updateProduct': AdminController.updateProductByAdmin,
+    '/admin/userManager/addUser': AdminController.addUser,
     '/user': UserController.handlerUserHomePage,
     '/user/filter': UserController.handlerFilterUserHomePage,
-    '/user/profile': UserController.handlerUserProfilePage
-
+    '/user/profile': UserController.handlerUserProfilePage,
+    '/product': ProductController.getDetailProduct
 };
 
 server.listen(PORT, 'localhost', () => {

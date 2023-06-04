@@ -89,30 +89,64 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link " href="/admin">
                 <i class="bi bi-grid"></i>
                 <span>Danh Mục</span>
             </a>
         </li><!-- End Home Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Quản Lý</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed"
+                data-bs-target="#components-nav"
+                data-bs-toggle="collapse" href="#">
+                <i class="ri-bear-smile-line"></i></i><span>Quản Lý Sản Phẩm</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="components-nav" class="nav-content collapse "
+                data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="/admin/productManager">
-                        <i class="bi bi-circle"></i><span>Sản Phẩm</span>
+                        <i class="bi bi-circle"></i><span>Danh Sách Sản Phẩm</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/admin/productManager/addProduct">
+                        <i class="bi bi-circle"></i><span>Thêm Mới Sản Phẩm</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav"
+               data-bs-toggle="collapse" href="#">
+                <i class="bi bi-file-person"></i><span>Quản Lý Khách Hàng</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse "
+                data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="/admin/userManager">
-                        <i class="bi bi-circle"></i><span>Khách Hàng</span>
+                        <i class="bi bi-circle"></i><span>Danh Sách Khách Hàng</span>
                     </a>
                 </li>
                 <li>
+                    <a href="/admin/userManager/addUser">
+                        <i class="bi bi-circle"></i><span>Thêm Mới Khách Hàng</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tables-nav"
+               data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Quản Lý Đơn Hàng</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse "
+                data-bs-parent="#sidebar-nav">
+                <li>
                     <a href="/admin/orderManager">
-                        <i class="bi bi-circle"></i><span>Đơn Hàng</span>
+                        <i class="bi bi-circle"></i><span>Danh Sách Đơn Hàng</span>
                     </a>
                 </li>
             </ul>
@@ -204,7 +238,8 @@
                                         <div class="col-md-8 col-lg-9">
                                             <div class="pt-2">
                                                 <label class="form-label" for="customFile">Chọn URL</label>
-                                                <input type="file" name="pImg" oninput="uploadImg()" class="form-control" id="customFile">
+                                                <input type="file" name="pImg" oninput="uploadImg()"
+                                                       class="form-control" id="customFile">
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +252,8 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="pType" class="col-md-4 col-lg-3 col-form-label">Loại Sản Phẩm</label>
+                                        <label for="pType" class="col-md-4 col-lg-3 col-form-label">Loại Sản
+                                            Phẩm</label>
                                         <div class="col-md-8 col-lg-9">
                                             <select class="form-select" name="pCode" aria-label="select-product">
                                                 {producTypeUpdate}
@@ -238,7 +274,8 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="pPrice" class="col-md-4 col-lg-3 col-form-label">Giá Sản Phẩm</label>
+                                        <label for="pPrice" class="col-md-4 col-lg-3 col-form-label">Giá Sản
+                                            Phẩm</label>
                                         <div class="col-md-8 col-lg-9">
                                             {productPriceUpdate}
                                         </div>
@@ -272,6 +309,15 @@
     </section>
 </main><!-- End #main -->
 
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="copyright">
+        &copy; Bản quyền <strong><span>HKP Shop</span></strong>. Đã đăng ký bản quyền!
+    </div>
+    <div class="credits">
+        Liên hệ: <a href="#">HKPShop@gmail.com</a>
+    </div>
+</footer><!-- End Footer -->
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>
 

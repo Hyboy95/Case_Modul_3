@@ -7,13 +7,17 @@ const generalModel = require('./../models/general.model');
 const productModel = require('./../models/product.model');
 const userModel = require('./../models/user.model');
 const GeneralController = require("./general.controller");
+const { log } = require("console");
 
 
 class AdminController {
     static async handlerAdmin(req, res) {
         try {
             if (req.method === "GET") {
+                let data = await GeneralController.readJSONfile(req, res);
                 let html = await BaseController.readFileData('./src/views/Admin/AdminHomePage.html');
+                html = html.replace('{adminName1}', data.username);
+                html = html.replace('{adminName2}', data.username);
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.write(html);
                 res.end();
@@ -23,32 +27,10 @@ class AdminController {
         }
     }
 
-    static async handlerUserByAdmin(req, res) {
-        if (req.method === "GET") {
-            let users = await userModel.getAllUser();
-            let newHtml = '';
-            users.forEach((user) => {
-
-                newHtml += `<tr>`;
-                newHtml += `<td>${user.userID}</td>`;
-                newHtml += `<td>${user.name}</td>`;
-                newHtml += `<td>${(user.username)}</td>`;
-                newHtml += `<td>${user.email}</td>`;
-                newHtml += `<td>${user.phone}</td>`;
-                newHtml += `<td>${user.address}</td>`;
-                newHtml += `<td><button >Sửa</button>
-                         <button>Xóa</button></td>`;
-            })
-            let html = await BaseController.readFileData('./src/views/admin/userManager.html');
-            html = html.replace('{user-data}', newHtml);
-            res.writeHead(200, {'Content-Type':'text/html'});
-            res.write(html);
-            res.end();
-        }
-    }
     static async handlerProductByAdmin(req, res) {
         try {
             if (req.method === "GET") {
+                let data = await GeneralController.readJSONfile(req, res);
                 let products = await productModel.getAllProduct();
                 let newHtml = '';
                 products.forEach((product) => {
@@ -60,11 +42,13 @@ class AdminController {
                     newHtml += `<td>${product.pSize}</td>`;
                     newHtml += `<td>
                     <a href='/admin/productManager/updateProduct?id=${product.pID}'><button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></a>
-                    <button type="click" name="pID" value = ${product.pID} class="btn btn-danger delete-btn-product"><i class="bi bi-trash"></i></button>
+                    <button name="pID" value = ${product.pID} class="btn btn-danger delete-btn-product"><i class="bi bi-trash"></i></button>
                     </td>`;
                     newHtml += `</tr>`
                 })
                 let html = await BaseController.readFileData('./src/views/admin/productManager.html');
+                html = html.replace('{adminName1}', data.username);
+                html = html.replace('{adminName2}', data.username);
                 html = html.replace('{product-data}', newHtml);
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.write(html);
@@ -80,9 +64,12 @@ class AdminController {
     static async updateProductByID(req, res) {
         let id = qs.parse(url.parse(req.url).query).id;
         if (id && req.method === "GET") {
+            let data = await GeneralController.readJSONfile(req, res);
             let productDataArray = await productModel.getInfoProductByID(id);
             let productInfo = productDataArray[0][0];
             let html = await BaseController.readFileData('./src/views/admin/updateProduct.html');
+            html = html.replace('{adminName1}', data.username);
+            html = html.replace('{adminName2}', data.username);
             html = html.replace('{pImg}', `<img src="${productInfo.pImg}" alt="Profile" class="rounded-circle"></img>`);
             html = html.replace('{productName1}', `${productInfo.pName}`);
             html = html.replace('{productDescribe}', `${productInfo.pdesc}`);
@@ -117,7 +104,8 @@ class AdminController {
                 console.log(err.message);
             }
         } else {
-            await GeneralController.getNotFoundPage(req, res);
+            res.writeHead(301, {location: '/login'});
+            res.end();
         }
     }
 
@@ -135,7 +123,10 @@ class AdminController {
 
     static async addProduct(req, res) {
         if (req.method === "GET") {
+            let data = await GeneralController.readJSONfile(req, res);
             let html = await BaseController.readFileData('./src/views/Admin/addProduct.html');
+            html = html.replace('{adminName1}', data.username);
+            html = html.replace('{adminName2}', data.username);
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(html);
             return res.end();
@@ -156,6 +147,7 @@ class AdminController {
     static async handlerUserByAdmin(req, res) {
         try {
             if (req.method === "GET") {
+                let data = await GeneralController.readJSONfile(req, res);
                 let users = await userModel.getAllUser();
                 let newHtml = '';
                 users.forEach((user) => {
@@ -167,11 +159,13 @@ class AdminController {
                     newHtml += `<td>${user.email}</td>`;
                     newHtml += `<td>${user.address}</td>`;
                     newHtml += `<td>
-                    <button type="click" name="userID" value = ${user.userID} class="btn btn-danger delete-btn-user"><i class="bi bi-trash"></i></button>
+                    <button name="userID" value = ${user.userID} class="btn btn-danger delete-btn-user"><i class="bi bi-trash"></i></button>
                     </td>`;
                     newHtml += `</tr>`
                 })
                 let html = await BaseController.readFileData('./src/views/admin/userManager.html');
+                html = html.replace('{adminName1}', data.username);
+                html = html.replace('{adminName2}', data.username);
                 html = html.replace('{user-data}', newHtml);
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.write(html);
@@ -186,7 +180,10 @@ class AdminController {
 
     static async addUser(req, res) {
         if (req.method === "GET") {
+            let data = await GeneralController.readJSONfile(req, res);
             let html = await BaseController.readFileData('./src/views/Admin/addUser.html');
+            html = html.replace('{adminName1}', data.username);
+            html = html.replace('{adminName2}', data.username);
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(html);
             return res.end();

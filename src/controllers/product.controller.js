@@ -3,6 +3,7 @@ const url = require('url');
 
 const BaseController = require('./base.controller');
 const productModel = require('./../models/product.model');
+const GeneralController = require('./general.controller');
 
 class ProductController {
     static async getListProduct(page, func) {
@@ -57,12 +58,12 @@ class ProductController {
         html = html.replace('{list-product}', newHtml);
         html = html.replace('{pagin}', paginationHtml);
         if (filePath === './src/views/user/UserHomePage.html') {
-            let dataUser = await BaseController.readFileData('./session/dataUser.json').catch(err => {
-                console.log(err.message);
-            });
-            let name = JSON.parse(dataUser).name;
-            html = html.replace('{Username1}', name);
-            html = html.replace('{Username2}', name);
+            let dataUser = await GeneralController.readJSONfile(req, res);
+            html = html.replace('{Username1}', dataUser.username);
+            html = html.replace('{Username2}', dataUser.username);
+            html = html.replace('{user-info}', `<a class="dropdown-item d-flex align-items-center" href="/user/profile?userID=${dataUser.userID}">
+            <i class="bi bi-person"></i>
+            <span>Thông tin người dùng</span></a>`);
         }
         res.writeHead(200, {'Content-type': 'text/html'});
         res.write(html);

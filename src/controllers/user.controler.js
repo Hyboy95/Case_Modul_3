@@ -5,6 +5,7 @@ const BaseController = require('./base.controller');
 const GeneralController = require('./../controllers/general.controller');
 const ProductController = require('./../controllers/product.controller');
 const productModel = require('./../models/product.model');
+const userModel = require('./../models/user.model');
 
 class UserController {
     static async handlerUserHomePage(req, res) {
@@ -39,14 +40,27 @@ class UserController {
 
     static async handlerUserProfilePage(req, res) {
         if (req.method === "GET") {
+            let data = await BaseController.readFileData('./session/dataUser.json');
+            data = JSON.parse(data.toString());
+            let infoUser = await userModel.getInfoUserByID(data.userID);
+            console.log(infoUser)
             let html = await BaseController.readFileData('./src/views/user/users-profile.html');
+            html = html.replace('{Username1}', infoUser[0].name);
+            html = html.replace('{Username2}', infoUser[0].name);
+            html = html.replace('{Username3}', infoUser[0].name);
+            html = html.replace('{Username4}', infoUser[0].name);
+            html = html.replace('{Address}', infoUser[0].address);
+            html = html.replace('{Phone}', infoUser[0].phone);
+            html = html.replace('{Email}', infoUser[0].email);
+            html = html.replace('{NameUpdate}', `<input name="nameUpdate" type="text" class="form-control" id="nameUpdate" value="${infoUser[0].name}">`);
+            html = html.replace('{AddressUpdate}', `<input name="addressUpdate" type="text" class="form-control" id="addressUpdate" value="${infoUser[0].address}">`);
+            html = html.replace('{PhoneUpdate}', `<input name="phoneUpdate" type="text" class="form-control" id="phoneUpdate" value="${infoUser[0].phone}">`);
+            html = html.replace('{EmailUpdate}', `<input name="emailUpdate" type="text" class="form-control" id="emailUpdate" value="${infoUser[0].email}">`);
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(html);
             res.end();
         } else {
-            let searchValue = await GeneralController.getDataByForm(req, res);
-            let getSearchProduct = productModel.getSearchProduct(searchValue.search);
-            await ProductController.getBasePage(req, res, getSearchProduct, '?page=', './src/views/user/UserHomePage.html');
+
         }
     }
 }

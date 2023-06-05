@@ -15,7 +15,8 @@ class GeneralModel extends BaseModel {
             return {
                 role: result[0][0].role,
                 name: result[0][0].name,
-                username: result[0][0].username
+                username: result[0][0].username,
+                userID: result[0][0].userID
             };
         } else return result[0].length;
     }

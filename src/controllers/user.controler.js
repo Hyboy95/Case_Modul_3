@@ -43,7 +43,6 @@ class UserController {
             let data = await BaseController.readFileData('./session/dataUser.json');
             data = JSON.parse(data.toString());
             let infoUser = await userModel.getInfoUserByID(data.userID);
-            console.log(infoUser)
             let html = await BaseController.readFileData('./src/views/user/users-profile.html');
             html = html.replace('{Username1}', infoUser[0].name);
             html = html.replace('{Username2}', infoUser[0].name);

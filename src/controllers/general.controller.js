@@ -16,6 +16,7 @@ class GeneralController {
 
     static async handlerLoginPage(req, res) {
         if (req.method === "GET") {
+            await BaseController.writeFileData('./session/dataUser.json', '');
             let html = await BaseController.readFileData('./src/views/General/Login.html');
             res.writeHead(200, {'Content-type': 'text/html'});
             res.write(html);
@@ -25,18 +26,19 @@ class GeneralController {
             let {username, password} = user;
             let infoUser = await generalModel.login(username, password);
             if (infoUser !== 0) {
+                await BaseController.writeFileData('./session/dataUser.json', JSON.stringify(infoUser)).catch((err) => {
+                    console.log(err.message)
+                });
                 let roleBuffer = infoUser.role;
                 let role = roleBuffer.readUInt8(0);
                 if (role === 1) {
                     console.log('Login success with role admin!');
-                    res.writeHead(302, {location: '/admin'});
+
+                    res.writeHead(301, {location: '/admin'});
                     res.end();
                 } else if (role === 0) {
                     console.log('Login success with role user!');
-                    await BaseController.writeFileData('./session/dataUser.json', JSON.stringify(infoUser)).catch((err) => {
-                        console.log(err.message)
-                    });
-                    res.writeHead(302, {location: `/user`});
+                    res.writeHead(301, {location: `/user`});
                     res.end();
                 }
             } else {
@@ -76,6 +78,19 @@ class GeneralController {
         res.writeHead(404, {'Content-type': 'text/html'});
         res.write(html);
         res.end();
+    }
+    static async readJSONfile(req, res) {
+        let dataJSON = await BaseController.readFileData('./session/dataUser.json').catch(err => {
+            console.log(err.message);
+        });
+        if (dataJSON !== '') {
+            let data = JSON.parse(dataJSON.toString());
+            return data;
+        }
+        else {
+            res.writeHead(301, {location: '/login'});
+            res.end();
+        }
     }
 }
 

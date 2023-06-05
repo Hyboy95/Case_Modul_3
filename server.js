@@ -37,7 +37,6 @@ const server = http.createServer(async (req, res) => {
         });
     }
 })
-
 router = {
     '/': HomeController.handlerHomePage,
     '/filter': HomeController.handlerFilterHomePage,

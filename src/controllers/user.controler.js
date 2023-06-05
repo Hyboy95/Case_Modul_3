@@ -39,14 +39,13 @@ class UserController {
     }
 
     static async handlerUserProfilePage(req, res) {
-        if (req.method === "GET") {
-            let data = await BaseController.readFileData('./session/dataUser.json');
-            data = JSON.parse(data.toString());
-            let infoUser = await userModel.getInfoUserByID(data.userID);
-            console.log(infoUser)
+        let query = qs.parse(url.parse(req.url).query);
+        if (query.userID && req.method === "GET") {
+            let data = await GeneralController.readJSONfile(req, res);
+            let infoUser = await userModel.getInfoUserByID(query.userID);
             let html = await BaseController.readFileData('./src/views/user/users-profile.html');
-            html = html.replace('{Username1}', infoUser[0].name);
-            html = html.replace('{Username2}', infoUser[0].name);
+            html = html.replace('{Username1}', data.username);
+            html = html.replace('{Username2}', data.username);
             html = html.replace('{Username3}', infoUser[0].name);
             html = html.replace('{Username4}', infoUser[0].name);
             html = html.replace('{Address}', infoUser[0].address);
@@ -60,7 +59,7 @@ class UserController {
             res.write(html);
             res.end();
         } else {
-
+            await GeneralController.getNotFoundPage(req, res);
         }
     }
 }
